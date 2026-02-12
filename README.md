@@ -48,7 +48,7 @@ Edita `stackAudit.config.json` para definir los requisitos de tu proyecto. Ejemp
 
 ```json
 {
-  "projectName": "Mi Super SaaS",
+  "projectName": "Mi SaaS",
   "version": "1.0.0",
   "checks": {
     "node": ">=18.0.0",
@@ -96,11 +96,6 @@ stackaudit check
     *   **Puertos:** Estrategia "Wait-for" con backoff exponencial (evita falsos negativos si la DB está arrancando).
     *   **Env:** Valida contra `process.env` (compatible con Docker/K8s/CI), no solo archivos de texto.
 
-## 🗺 Roadmap
-
-- [ ] **Fase 1 (MVP):** Validación de Node, Archivos y CLI básica.
-- [ ] **Fase 2 (Robustez):** Checks de Puertos (Wait-for), Variables de Entorno, Comandos custom.
-- [ ] **Fase 3 (DevEx):** Comando `init`, UI mejorada, Distribución de binarios nativos (SEA).
 
 ## 🤝 Contribuyendo
 
