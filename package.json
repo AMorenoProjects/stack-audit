@@ -1,0 +1,55 @@
+{
+  "name": "stackaudit",
+  "version": "0.1.0",
+  "description": "CLI tool to audit developer environments against a declarative configuration file",
+  "type": "module",
+  "bin": {
+    "stackaudit": "./bin/stackAudit.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node bin/stackAudit.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "build:sea": "npm run build && node scripts/build-sea.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "developer-experience",
+    "devex",
+    "audit",
+    "environment",
+    "validation",
+    "onboarding"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
+    "execa": "^9.5.2",
+    "ora": "^8.2.0",
+    "semver": "^7.6.3",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "@types/semver": "^7.5.8",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

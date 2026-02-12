@@ -1,0 +1,11 @@
+{
+  "projectName": "Failing Demo",
+  "version": "1.0.0",
+  "checks": {
+    "node": ">=99.0.0",
+    "files": ["package.json", "this-does-not-exist.yml"],
+    "ports": [
+      { "port": 19, "name": "Ghost Service" }
+    ]
+  }
+}

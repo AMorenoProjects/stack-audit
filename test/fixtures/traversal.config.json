@@ -1,0 +1,12 @@
+{
+  "projectName": "Path Traversal Test",
+  "version": "1.0.0",
+  "checks": {
+    "files": ["package.json", "../../../../etc/passwd"],
+    "env": {
+      "target": "../../etc/shadow",
+      "example": ".env.example",
+      "required": ["root"]
+    }
+  }
+}

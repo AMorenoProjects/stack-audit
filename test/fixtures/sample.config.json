@@ -1,0 +1,9 @@
+{
+  "projectName": "stackAudit Self-Test",
+  "version": "1.0.0",
+  "checks": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0",
+    "files": ["package.json", "tsconfig.json"]
+  }
+}
