@@ -19,9 +19,9 @@
 ### Vía NPM (Recomendado para Node.js)
 
 ```bash
-npm install -g stackAudit
+npm install -g stackaudit
 # O ejecútalo directamente con npx
-npx stackAudit check
+npx stackaudit check
 ```
 
 ### Binarios Standalone (Próximamente)
@@ -37,7 +37,7 @@ Para desarrolladores de Go, Python, PHP, etc., ofreceremos binarios compilados (
 Genera un archivo de configuración base en tu proyecto:
 
 ```bash
-stackAudit init
+stackaudit init
 ```
 
 Esto creará un archivo `stackAudit.config.json` en la raíz de tu proyecto.
@@ -76,7 +76,7 @@ Edita `stackAudit.config.json` para definir los requisitos de tu proyecto. Ejemp
 Ejecuta el comando check antes de trabajar:
 
 ```bash
-stackAudit check
+stackaudit check
 ```
 
 ✅ Si todo está bien, verás un mensaje de éxito.

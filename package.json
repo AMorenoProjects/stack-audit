@@ -4,7 +4,7 @@
   "description": "CLI tool to audit developer environments against a declarative configuration file",
   "type": "module",
   "bin": {
-    "stackaudit": "./bin/stackAudit.js"
+    "stackaudit": "bin/stackaudit.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
