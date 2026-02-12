@@ -1,6 +1,6 @@
 {
   "name": "stackaudit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI tool to audit developer environments against a declarative configuration file",
   "type": "module",
   "bin": {
