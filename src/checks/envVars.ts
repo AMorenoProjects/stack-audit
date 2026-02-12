@@ -49,9 +49,10 @@ export function checkEnvVars(envConfig: EnvConfig): () => Promise<CheckResult[]>
       try {
         content = await readFile(targetPath, "utf-8");
       } catch {
+        // CI/CD Support: It's okay if .env is missing, as long as variables are in process.env
         return {
-          status: "fail" as const,
-          message: `File not found: ${envConfig.target}. Copy from ${envConfig.example} and fill in values.`,
+          status: "pass",
+          message: `File not found: ${envConfig.target} (Using process.env)`,
         };
       }
 
@@ -65,9 +66,8 @@ export function checkEnvVars(envConfig: EnvConfig): () => Promise<CheckResult[]>
 
     results.push(fileCheck);
 
-    if (fileCheck.status === "fail") {
-      return results;
-    }
+    // Proceed to check keys regardless of file existence
+
 
     for (const key of envConfig.required) {
       const keyResult = await timedCheck(`Env: ${key}`, async () => {
