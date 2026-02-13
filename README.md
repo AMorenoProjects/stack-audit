@@ -12,7 +12,6 @@
 *   **Fail Efficiently:** No más "Whack-a-Mole" de errores. `stackAudit` ejecuta verificaciones en paralelo y te reporta *todos* los problemas de golpe.
 *   **Cero Configuración Oculta:** Si tu proyecto lo necesita, debe estar en `stackAudit.config.json`.
 *   **Local-First:** Todo ocurre en tu máquina. Tus secretos (`.env`) nunca salen de tu ordenador.
-*   **CI/CD Ready:** Diseñado para funcionar igual en tu laptop y en tus pipelines de GitHub Actions.
 
 ## 📦 Instalación
 
