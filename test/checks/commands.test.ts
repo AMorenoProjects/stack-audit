@@ -80,6 +80,6 @@ describe("checkCommands", () => {
       const results = await checker();
       // Either pass (docker running) or fail (not running) — never skip
       expect(results[0].status).not.toBe("skip");
-    });
+    }, 15000);
   });
 });
