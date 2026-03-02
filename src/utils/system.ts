@@ -118,6 +118,7 @@ export async function execCommand(command: string): Promise<string> {
   const result = await execa(cmd, args, {
     timeout: 10_000,
     reject: false,
+    shell: process.platform === "win32",
   });
 
   if (result.failed) {

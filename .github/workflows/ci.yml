@@ -41,7 +41,7 @@ jobs:
         run: npm test
 
       - name: CLI smoke test
-        run: node bin/stackAudit.js --version
+        run: node bin/stackaudit.js --version
 
   release-binaries:
     name: Build standalone binaries

@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "start": "node bin/stackAudit.js",
+    "start": "node bin/stackaudit.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
