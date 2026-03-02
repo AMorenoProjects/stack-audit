@@ -1,4 +1,4 @@
-import { access, readFile, writeFile } from "node:fs/promises";
+import { access, open, readFile, writeFile } from "node:fs/promises";
 import { basename, resolve } from "node:path";
 import { logError, logInfo, logSuccess, logWarn } from "../utils/logger.js";
 import { execCommand } from "../utils/system.js";
@@ -145,15 +145,6 @@ async function buildDetectedConfig(): Promise<{ projectName: string; version: st
 export async function initCommand(options: InitOptions): Promise<void> {
   const targetPath = resolve(process.cwd(), CONFIG_FILENAME);
 
-  try {
-    await access(targetPath);
-    throw new Error(
-      `${CONFIG_FILENAME} already exists in this directory. Delete it first to re-initialize.`,
-    );
-  } catch {
-    // File does not exist — proceed
-  }
-
   let config;
 
   if (options.detect) {
@@ -180,9 +171,16 @@ export async function initCommand(options: InitOptions): Promise<void> {
 
   try {
     const content = JSON.stringify(config, null, 2) + "\n";
-    await writeFile(targetPath, content, "utf-8");
+    const fileHandle = await open(targetPath, "wx");
+    await fileHandle.writeFile(content, "utf-8");
+    await fileHandle.close();
     logSuccess(`Created ${CONFIG_FILENAME} — customize it for your project.`);
-  } catch (error) {
+  } catch (error: any) {
+    if (error.code === "EEXIST") {
+      throw new Error(
+        `${CONFIG_FILENAME} already exists in this directory. Delete it first to re-initialize.`,
+      );
+    }
     throw new Error(
       `Failed to write ${CONFIG_FILENAME}: ${error instanceof Error ? error.message : String(error)}`,
     );

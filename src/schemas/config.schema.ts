@@ -51,7 +51,10 @@ const checksSchema = z
   );
 
 export const configSchema = z.object({
-  projectName: z.string().min(1, "projectName is required"),
+  projectName: z
+    .string()
+    .min(1, "projectName is required")
+    .regex(/^[\w\-.@/ ]+$/, "projectName contains invalid characters (ANSI/control sequences not allowed)"),
   version: z.string().min(1, "version is required"),
   checks: checksSchema,
 });

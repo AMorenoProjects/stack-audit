@@ -25,7 +25,30 @@ export function checkFiles(filesList: string[]): () => Promise<CheckResult[]> {
         }
 
         const filePath = resolve(cwd, file);
-        const realPath = await fs.realpath(filePath);
+        let realPath: string;
+        try {
+          realPath = await fs.realpath(filePath);
+        } catch (err: any) {
+          if (err.code === "ENOENT") {
+            // Check if the traversal target string actually had traversal in it
+            const relPath = relative(cwd, filePath);
+            if (relPath.startsWith("..")) {
+              return {
+                status: "fail" as const,
+                message: `Path traversal detected: "${file}" resolves outside the project directory`,
+              };
+            }
+            return {
+              status: "fail" as const,
+              message: `Required file not found: ${file}`,
+            };
+          }
+          return {
+            status: "fail" as const,
+            message: `Required file not found: ${file} Error: ${err.message}`,
+          };
+        }
+
         const rel = relative(cwd, realPath);
         if (rel.startsWith("..")) {
           return {

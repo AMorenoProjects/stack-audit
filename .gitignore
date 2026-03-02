@@ -5,5 +5,3 @@ dist/
 .env.local
 release/
 sea-config.json
-.claude/
-docs/

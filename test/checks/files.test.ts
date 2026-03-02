@@ -35,7 +35,7 @@ describe("checkFiles", () => {
 
     expect(results).toHaveLength(1);
     expect(results[0].status).toBe("fail");
-    expect(results[0].message).toContain("not found");
+    expect(results[0].message).toContain("Required file not found");
   });
 
   it("handles mixed existing and missing files", async () => {

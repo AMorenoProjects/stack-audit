@@ -36,8 +36,8 @@ const SAFE_COMMAND_PREFIXES = [
  * Checks if a command is on the safe allowlist.
  */
 export function isCommandAllowed(command: string): boolean {
-  const normalized = command.trim();
-  return SAFE_COMMAND_PREFIXES.some((safeCmd) => normalized === safeCmd);
+  const normalized = command.trim().toLowerCase();
+  return SAFE_COMMAND_PREFIXES.some((safeCmd) => normalized === safeCmd.toLowerCase());
 }
 
 /**
